@@ -7,6 +7,13 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
+const scrollToSection = (href: string) => {
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function GlassNav() {
   return (
     <motion.nav
@@ -25,6 +32,10 @@ export default function GlassNav() {
             <a
               key={l.href}
               href={l.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(l.href);
+              }}
               className="px-4 py-2 text-sm text-foreground/75 hover:text-foreground transition-colors rounded-full hover:bg-white/5"
             >
               {l.label}

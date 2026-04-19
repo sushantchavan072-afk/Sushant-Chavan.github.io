@@ -37,8 +37,9 @@ const items = [
 ];
 
 const certs = [
-  { date: "Mar 2026", name: "Deloitte Data Analytics", platform: "Forage" },
-  { date: "Mar 2026", name: "Walmart Pharmacy Technician", platform: "Forage" },
+  { date: "Mar 2026", name: "Deloitte Data Analytics", platform: "Forage", link: "https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing" },
+  { date: "Mar 2026", name: "Walmart Pharmacy Technician", platform: "Forage", link: "https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing" },
+  { date: "Mar 2026", name: "AI In Pharma", platform: "Certificate", link: "/Ai-In-Pharma.pdf" },
 ];
 
 export default function Experience() {
@@ -94,7 +95,7 @@ export default function Experience() {
           <div className="mono text-[10px] uppercase tracking-[0.3em] text-aqua mb-6">
             Certified Simulations
           </div>
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-3 gap-5">
             {certs.map((c, i) => (
               <motion.div
                 key={c.name}
@@ -111,7 +112,7 @@ export default function Experience() {
                   </div>
                 </div>
                 <a
-                  href="https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing"
+                  href={c.link}
                   download
                   title={`Download ${c.name} Certificate`}
                   className="h-12 w-12 rounded-full glass-pill flex items-center justify-center text-mint hover:bg-mint/10 transition-colors cursor-pointer shrink-0"
