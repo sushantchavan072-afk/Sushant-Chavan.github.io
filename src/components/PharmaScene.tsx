@@ -7,9 +7,47 @@ import {
   MeshTransmissionMaterial,
   Instances,
   Instance,
+  useProgress,
 } from "@react-three/drei";
 import { useRef, Suspense, useMemo } from "react";
 import * as THREE from "three";
+import { motion, AnimatePresence } from "framer-motion";
+import { Loader2 } from "lucide-react";
+
+function SceneLoader() {
+  const { active, progress } = useProgress();
+
+  return (
+    <AnimatePresence>
+      {active && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, filter: "blur(10px)", scale: 0.95 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
+        >
+          <div className="glass-pill px-8 py-8 flex flex-col items-center justify-center shadow-glow-mint bg-background/40">
+            <div className="relative flex items-center justify-center mb-6">
+              <div className="absolute inset-0 bg-mint/20 blur-2xl rounded-full animate-liquid-pulse" />
+              <Loader2 className="w-10 h-10 text-mint animate-spin relative z-10" />
+            </div>
+            <div className="text-mint font-mono text-[10px] uppercase tracking-[0.2em] flex flex-col items-center gap-3">
+              <span>Synthesizing Scene</span>
+              <div className="w-32 h-1 bg-white/10 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-mint"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ ease: "easeOut" }}
+                />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
 
 function Pellet({
   initialPos,
@@ -448,12 +486,14 @@ export default function PharmaScene({
   isMobile?: boolean;
 }) {
   return (
-    <Canvas
-      camera={{ position: [0, 0, 17], fov: isMobile ? 44 : 40 }}
-      dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      performance={{ min: 0.5 }}
-    >
+    <div className="relative w-full h-full">
+      <SceneLoader />
+      <Canvas
+        camera={{ position: [0, 0, 17], fov: isMobile ? 44 : 40 }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        performance={{ min: 0.5 }}
+      >
       <Suspense fallback={null}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[4, 6, 5]} intensity={1.4} castShadow />
@@ -534,5 +574,6 @@ export default function PharmaScene({
         />
       </Suspense>
     </Canvas>
+    </div>
   );
 }

@@ -27,31 +27,78 @@ export default function Contact() {
             <div className="grid md:grid-cols-3 gap-4 mb-10">
               <a
                 href="mailto:sushantchavan072@gmail.com"
-                className="glass rounded-2xl p-5 hover:bg-white/[0.08] transition-all hover:scale-[1.02] group"
+                className="glass rounded-2xl p-5 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02] group relative overflow-hidden hover:border-[var(--card-accent)]"
+                style={{ "--card-accent": "var(--mint)" } as React.CSSProperties}
               >
-                <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
-                  Email
-                </div>
-                <div className="text-sm md:text-base text-foreground group-hover:text-mint transition-colors break-all">
-                  sushantchavan072@gmail.com
+                <motion.div
+                  animate={{
+                    left: ["0%", "100%", "0%"],
+                    top: ["0%", "100%", "0%"],
+                  }}
+                  transition={{
+                    left: { duration: 8, ease: "easeInOut", repeat: Infinity },
+                    top: { duration: 11, ease: "easeInOut", repeat: Infinity },
+                  }}
+                  className="absolute w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity pointer-events-none z-0"
+                  style={{ background: "var(--mint)", transform: "translate(-50%, -50%)" }}
+                />
+                <div className="relative z-10">
+                  <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
+                    Email
+                  </div>
+                  <div className="text-sm md:text-base text-foreground transition-colors break-all">
+                    sushantchavan072@gmail.com
+                  </div>
                 </div>
               </a>
               <a
                 href="tel:+919529936483"
-                className="glass rounded-2xl p-5 hover:bg-white/[0.08] transition-all hover:scale-[1.02] group"
+                className="glass rounded-2xl p-5 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02] group relative overflow-hidden hover:border-[var(--card-accent)]"
+                style={{ "--card-accent": "var(--aqua)" } as React.CSSProperties}
               >
-                <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
-                  Phone
-                </div>
-                <div className="text-base text-foreground group-hover:text-mint transition-colors">
-                  +91 95299 36483
+                <motion.div
+                  animate={{
+                    left: ["0%", "100%", "0%"],
+                    top: ["0%", "100%", "0%"],
+                  }}
+                  transition={{
+                    left: { duration: 9, ease: "easeInOut", repeat: Infinity },
+                    top: { duration: 12, ease: "easeInOut", repeat: Infinity },
+                  }}
+                  className="absolute w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity pointer-events-none z-0"
+                  style={{ background: "var(--aqua)", transform: "translate(-50%, -50%)" }}
+                />
+                <div className="relative z-10">
+                  <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
+                    Phone
+                  </div>
+                  <div className="text-base text-foreground transition-colors">
+                    +91 95299 36483
+                  </div>
                 </div>
               </a>
-              <div className="glass rounded-2xl p-5">
-                <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
-                  Location
+              <div 
+                className="glass rounded-2xl p-5 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02] group relative overflow-hidden hover:border-[var(--card-accent)] cursor-default"
+                style={{ "--card-accent": "var(--violet)" } as React.CSSProperties}
+              >
+                <motion.div
+                  animate={{
+                    left: ["0%", "100%", "0%"],
+                    top: ["0%", "100%", "0%"],
+                  }}
+                  transition={{
+                    left: { duration: 10, ease: "easeInOut", repeat: Infinity },
+                    top: { duration: 13, ease: "easeInOut", repeat: Infinity },
+                  }}
+                  className="absolute w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity pointer-events-none z-0"
+                  style={{ background: "var(--violet)", transform: "translate(-50%, -50%)" }}
+                />
+                <div className="relative z-10">
+                  <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
+                    Location
+                  </div>
+                  <div className="text-base text-foreground transition-colors">Dahanu · Palghar · MH</div>
                 </div>
-                <div className="text-base text-foreground">Dahanu · Palghar · MH</div>
               </div>
             </div>
 

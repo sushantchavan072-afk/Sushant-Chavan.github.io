@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { k: "Year", v: "3rd" },
-  { k: "GPA Era", v: "2023–27" },
-  { k: "Members Reached", v: "2.7K+" },
-  { k: "Languages", v: "4" },
+  { k: "Year", v: "3rd", color: "mint" },
+  { k: "GPA Era", v: "2023–27", color: "aqua" },
+  { k: "Members Reached", v: "2.7K+", color: "violet" },
+  { k: "Languages", v: "4", color: "coral" },
 ];
 
 export default function About() {
@@ -44,10 +44,23 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass rounded-2xl p-5 relative overflow-hidden"
+                  className="glass rounded-2xl p-5 relative overflow-hidden group hover:border-[var(--card-accent)] transition-all duration-500 hover:scale-[1.02]"
+                  style={{ "--card-accent": `var(--${s.color})` } as React.CSSProperties}
                 >
-                  <div className="absolute inset-0 animate-shimmer opacity-30" />
-                  <div className="relative">
+                  {/* Moving Color Orb */}
+                  <motion.div
+                    animate={{
+                      left: ["0%", "100%", "0%"],
+                      top: ["0%", "100%", "0%"],
+                    }}
+                    transition={{
+                      left: { duration: 8 + i, ease: "easeInOut", repeat: Infinity },
+                      top: { duration: 11 + i, ease: "easeInOut", repeat: Infinity },
+                    }}
+                    className="absolute w-20 h-20 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity pointer-events-none z-0"
+                    style={{ background: `var(--${s.color})`, transform: "translate(-50%, -50%)" }}
+                  />
+                  <div className="relative z-10">
                     <div className="display text-3xl text-foreground">{s.v}</div>
                     <div className="mono text-[10px] uppercase tracking-widest text-foreground/60 mt-2">
                       {s.k}

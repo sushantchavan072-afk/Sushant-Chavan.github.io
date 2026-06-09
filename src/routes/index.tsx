@@ -4,6 +4,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
+import Work from "@/components/Work";
+import Chatbot from "@/components/Chatbot";
 import Contact from "@/components/Contact";
 
 export const Route = createFileRoute("/")({
@@ -33,6 +35,8 @@ function Index() {
       <About />
       <Experience />
       <Skills />
+      <Work />
+      <Chatbot />
       <Contact />
     </main>
   );

@@ -55,15 +55,24 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="glass rounded-3xl p-6 relative overflow-hidden group"
+              className="glass rounded-3xl p-6 relative overflow-hidden group hover:border-[var(--card-accent)] transition-colors duration-500"
+              style={{ "--card-accent": `var(--${g.color})` } as React.CSSProperties}
             >
-              {/* Pill accent */}
-              <div
-                className="absolute -top-10 -right-10 h-32 w-32 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity"
-                style={{ background: `var(--${g.color})` }}
+              {/* Moving Color Orb */}
+              <motion.div
+                animate={{
+                  left: ["0%", "100%", "0%"],
+                  top: ["0%", "100%", "0%"],
+                }}
+                transition={{
+                  left: { duration: 10, ease: "easeInOut", repeat: Infinity },
+                  top: { duration: 14, ease: "easeInOut", repeat: Infinity },
+                }}
+                className="absolute w-32 h-32 rounded-full blur-3xl opacity-40 group-hover:opacity-75 transition-opacity pointer-events-none z-0"
+                style={{ background: `var(--${g.color})`, transform: "translate(-50%, -50%)" }}
               />
 
-              <div className="relative">
+              <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-5">
                   <span
                     className="h-2.5 w-2.5 rounded-full"
