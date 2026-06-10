@@ -33,8 +33,8 @@ export default function Work() {
             </h2>
           </div>
           <p className="text-lg text-foreground/70 max-w-md md:justify-self-end">
-            Tap on newsletters to view them. These yearbook images highlight editorial design
-            and newsletter work from recent projects.
+            Tap on newsletters to view them. These yearbook images highlight editorial design and
+            newsletter work from recent projects.
           </p>
         </div>
 

@@ -14,7 +14,7 @@ const links = [
 const scrollToSection = (href: string) => {
   const element = document.querySelector(href);
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: "smooth" });
   }
 };
 
@@ -30,7 +30,6 @@ export default function GlassNav() {
       className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center"
     >
       <div className="glass-pill rounded-full px-2 py-2 flex items-center gap-1">
-
         <div className="hidden md:flex items-center">
           {links.map((l) => (
             <a

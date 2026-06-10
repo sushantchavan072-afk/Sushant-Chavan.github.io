@@ -9,11 +9,14 @@ Use this reference to handle database events in SQL Connect by triggering Cloud 
 To handle a mutation execution, define the `onMutationExecuted` event handler.
 
 ### 🚨 Critical Infinite Loop Constraint
+
 Unlike document-based database triggers (like Firestore or Realtime Database), **SQL Connect event triggers do not provide a "before" snapshot of the data.** Because SQL Connect proxies requests directly to PostgreSQL, "before" states cannot be resolved transactionally.
-* **Warning**: If `onMutationExecuted` executes a SQL Connect mutation, it can trigger another `onMutationExecuted` trigger in a cascading loop. Make sure that `onMutationExecuted` has a filter on `operation` to reduce the chance of infinite loops.
-* **Rule**: Ensure that no mutation executed inside the function can ever trigger the handler itself, even indirectly.
+
+- **Warning**: If `onMutationExecuted` executes a SQL Connect mutation, it can trigger another `onMutationExecuted` trigger in a cascading loop. Make sure that `onMutationExecuted` has a filter on `operation` to reduce the chance of infinite loops.
+- **Rule**: Ensure that no mutation executed inside the function can ever trigger the handler itself, even indirectly.
 
 ### Location & Region Matching Rule
+
 **The Cloud Function region option must match your SQL Connect service location.** You **must** explicitly configure the `region` parameter (e.g., `'us-central1'`) in the trigger options to match the `location` specified in `dataconnect.yaml`.
 
 ```typescript
@@ -22,14 +25,14 @@ import { logger } from "firebase-functions";
 
 export const logMutation = onMutationExecuted(
   {
-    region: "europe-west1" // Must match the SQL Connect service location
+    region: "europe-west1", // Must match the SQL Connect service location
   },
   (event) => {
     logger.info("A mutation was executed!", {
       eventId: event.id,
-      type: event.type
+      type: event.type,
     });
-  }
+  },
 );
 ```
 
@@ -37,10 +40,10 @@ export const logMutation = onMutationExecuted(
 
 ## Event Filtering
 
-To prevent unnecessary function invocations and infinite execution loops, **always specify narrow filters** using `service` and `operation` attributes. 
+To prevent unnecessary function invocations and infinite execution loops, **always specify narrow filters** using `service` and `operation` attributes.
 
-*   **`service` & `operation` (Recommended)**: Always specify these to restrict the trigger to a specific mutation in your project.
-*   **`connector` (Optional)**: Can be omitted if you want to trigger on the same operation name across multiple connectors. Specify it only if you need to restrict the trigger to a specific connector.
+- **`service` & `operation` (Recommended)**: Always specify these to restrict the trigger to a specific mutation in your project.
+- **`connector` (Optional)**: Can be omitted if you want to trigger on the same operation name across multiple connectors. Specify it only if you need to restrict the trigger to a specific connector.
 
 ### Comprehensive Example
 
@@ -58,7 +61,7 @@ export const onUserCreate = onMutationExecuted(
   },
   (event) => {
     logger.info("A new user was created!");
-  }
+  },
 );
 
 // Advanced: Trigger using wildcards or capture variables
@@ -70,10 +73,9 @@ export const onMutationCaptures = onMutationExecuted(
   (event) => {
     const triggeredOp = event.params.operation;
     logger.info(`Captured operation execution: ${triggeredOp}`);
-  }
+  },
 );
 ```
-
 
 ---
 
@@ -83,13 +85,13 @@ Extract security credentials about the caller who executed the mutation using `e
 
 ### Auth Context Mappings
 
-| Triggered Principal | `event.authType` | `event.authId` |
-| :--- | :--- | :--- |
-| **Authenticated end user** | `"app_user"` | Firebase Auth token UID |
-| **Unauthenticated end user** | `"unauthenticated"` | Empty |
-| **Admin SDK (Impersonating User)** | `"app_user"` | Firebase Auth token UID of the impersonated user |
-| **Admin SDK (Impersonating Unauth)**| `"unauthenticated"` | Empty |
-| **Admin SDK (Full privileges)** | `"admin"` | Empty |
+| Triggered Principal                  | `event.authType`    | `event.authId`                                   |
+| :----------------------------------- | :------------------ | :----------------------------------------------- |
+| **Authenticated end user**           | `"app_user"`        | Firebase Auth token UID                          |
+| **Unauthenticated end user**         | `"unauthenticated"` | Empty                                            |
+| **Admin SDK (Impersonating User)**   | `"app_user"`        | Firebase Auth token UID of the impersonated user |
+| **Admin SDK (Impersonating Unauth)** | `"unauthenticated"` | Empty                                            |
+| **Admin SDK (Full privileges)**      | `"admin"`           | Empty                                            |
 
 ### Auth Extraction Example
 
@@ -102,7 +104,7 @@ export const processSensitiveMutation = onMutationExecuted(
     } else {
       console.log(`Mutation initiated by user: ${event.authId}`);
     }
-  }
+  },
 );
 ```
 
@@ -135,9 +137,9 @@ The trigger payload provides inputs passed to the mutation (`payload.variables`)
 }
 ```
 
-* **`event.data.payload.variables`**: Inputs passed to the mutation.
-* **`event.data.payload.data`**: Fields returned by the mutation execution.
-* **`event.data.payload.errors`**: Array of execution errors. Empty if successful.
+- **`event.data.payload.variables`**: Inputs passed to the mutation.
+- **`event.data.payload.data`**: Fields returned by the mutation execution.
+- **`event.data.payload.errors`**: Array of execution errors. Empty if successful.
 
 ### Payload Extraction Example
 
@@ -158,7 +160,9 @@ export const onNewReview = onMutationExecuted(
     // Extract returned fields from the database write
     const returnedFields = event.data.payload.data;
 
-    logger.info(`Processed review ${returnedFields.review_insert.id} for movie ${inputVariables.movieId}`);
-  }
+    logger.info(
+      `Processed review ${returnedFields.review_insert.id} for movie ${inputVariables.movieId}`,
+    );
+  },
 );
 ```

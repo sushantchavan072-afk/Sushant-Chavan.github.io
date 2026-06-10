@@ -494,86 +494,86 @@ export default function PharmaScene({
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         performance={{ min: 0.5 }}
       >
-      <Suspense fallback={null}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[4, 6, 5]} intensity={1.4} castShadow />
-        <pointLight position={[-4, 2, 3]} intensity={1.2} color="#a7f0d9" />
-        <pointLight position={[4, -2, 2]} intensity={0.9} color="#bfe0ff" />
+        <Suspense fallback={null}>
+          <ambientLight intensity={0.6} />
+          <directionalLight position={[4, 6, 5]} intensity={1.4} castShadow />
+          <pointLight position={[-4, 2, 3]} intensity={1.2} color="#a7f0d9" />
+          <pointLight position={[4, -2, 2]} intensity={0.9} color="#bfe0ff" />
 
-        <Environment resolution={256} preset="city">
-          <Lightformer
-            intensity={1.5}
-            position={[0, 5, 3]}
-            rotation-x={Math.PI / 2}
-            scale={[10, 1, 1]}
-            color="#ffffff"
+          <Environment resolution={256} preset="city">
+            <Lightformer
+              intensity={1.5}
+              position={[0, 5, 3]}
+              rotation-x={Math.PI / 2}
+              scale={[10, 1, 1]}
+              color="#ffffff"
+            />
+            <Lightformer
+              intensity={1}
+              position={[-4, 0, 2]}
+              rotation-y={Math.PI / 2}
+              scale={[6, 4, 1]}
+              color="#d0f5e8"
+            />
+            <Lightformer
+              intensity={0.8}
+              position={[4, 0, 2]}
+              rotation-y={-Math.PI / 2}
+              scale={[6, 4, 1]}
+              color="#dfeeff"
+            />
+          </Environment>
+
+          <Capsule pointer={pointer} />
+          <Syringe pointer={pointer} />
+          <Tablet
+            pointer={pointer}
+            position={[-2.6, -1.8, -1]}
+            scale={1.2}
+            rotation={[0.4, 0, 0.2]}
           />
-          <Lightformer
-            intensity={1}
-            position={[-4, 0, 2]}
-            rotation-y={Math.PI / 2}
-            scale={[6, 4, 1]}
-            color="#d0f5e8"
+          <DNAStrand
+            pointer={pointer}
+            position={[3.2, -1.2, -0.5]}
+            scale={0.65}
+            rotation={[0.2, 0.5, -0.3]}
           />
-          <Lightformer
-            intensity={0.8}
-            position={[4, 0, 2]}
-            rotation-y={-Math.PI / 2}
-            scale={[6, 4, 1]}
-            color="#dfeeff"
+
+          <FloatingMolecule
+            position={[-2.4, 1.2, 0.5]}
+            color="#a7f0d9"
+            pointer={pointer}
+            parallax={0.8}
           />
-        </Environment>
+          <FloatingMolecule
+            position={[-1.8, -1.6, 1]}
+            color="#bfe0ff"
+            pointer={pointer}
+            parallax={1.2}
+          />
+          <FloatingMolecule
+            position={[2.2, -1.4, 0.8]}
+            color="#d8c5f5"
+            pointer={pointer}
+            parallax={0.6}
+          />
+          <FloatingMolecule
+            position={[1.5, 2.2, -0.5]}
+            color="#a7f0d9"
+            pointer={pointer}
+            parallax={1}
+          />
 
-        <Capsule pointer={pointer} />
-        <Syringe pointer={pointer} />
-        <Tablet
-          pointer={pointer}
-          position={[-2.6, -1.8, -1]}
-          scale={1.2}
-          rotation={[0.4, 0, 0.2]}
-        />
-        <DNAStrand
-          pointer={pointer}
-          position={[3.2, -1.2, -0.5]}
-          scale={0.65}
-          rotation={[0.2, 0.5, -0.3]}
-        />
-
-        <FloatingMolecule
-          position={[-2.4, 1.2, 0.5]}
-          color="#a7f0d9"
-          pointer={pointer}
-          parallax={0.8}
-        />
-        <FloatingMolecule
-          position={[-1.8, -1.6, 1]}
-          color="#bfe0ff"
-          pointer={pointer}
-          parallax={1.2}
-        />
-        <FloatingMolecule
-          position={[2.2, -1.4, 0.8]}
-          color="#d8c5f5"
-          pointer={pointer}
-          parallax={0.6}
-        />
-        <FloatingMolecule
-          position={[1.5, 2.2, -0.5]}
-          color="#a7f0d9"
-          pointer={pointer}
-          parallax={1}
-        />
-
-        <ContactShadows
-          position={[0, -2.2, 0]}
-          opacity={0.25}
-          scale={10}
-          blur={3}
-          far={3}
-          color="#5e7a92"
-        />
-      </Suspense>
-    </Canvas>
+          <ContactShadows
+            position={[0, -2.2, 0]}
+            opacity={0.25}
+            scale={10}
+            blur={3}
+            far={3}
+            color="#5e7a92"
+          />
+        </Suspense>
+      </Canvas>
     </div>
   );
 }

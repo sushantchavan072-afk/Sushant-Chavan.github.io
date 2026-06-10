@@ -39,7 +39,7 @@ export default function Hero() {
 
     const handleOrientation = (e: DeviceOrientationEvent) => {
       if (e.gamma === null || e.beta === null) return;
-      
+
       // constrain gamma to [-45, 45]
       let gamma = e.gamma;
       if (gamma > 45) gamma = 45;
@@ -52,7 +52,7 @@ export default function Hero() {
 
       const nx = gamma / 45;
       const ny = ((beta - 90) / 45) * -1; // -1 to 1, inverted for natural feel
-      
+
       pointer.current.x = nx;
       pointer.current.y = ny;
       mx.set(nx);

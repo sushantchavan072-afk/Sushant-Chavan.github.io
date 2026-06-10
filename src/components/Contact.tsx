@@ -72,12 +72,10 @@ export default function Contact() {
                   <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
                     Phone
                   </div>
-                  <div className="text-base text-foreground transition-colors">
-                    +91 95299 36483
-                  </div>
+                  <div className="text-base text-foreground transition-colors">+91 95299 36483</div>
                 </div>
               </a>
-              <div 
+              <div
                 className="glass rounded-2xl p-5 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02] group relative overflow-hidden hover:border-[var(--card-accent)] cursor-default"
                 style={{ "--card-accent": "var(--violet)" } as React.CSSProperties}
               >
@@ -97,7 +95,9 @@ export default function Contact() {
                   <div className="mono text-[10px] uppercase tracking-widest text-foreground/55 mb-2">
                     Location
                   </div>
-                  <div className="text-base text-foreground transition-colors">Dahanu · Palghar · MH</div>
+                  <div className="text-base text-foreground transition-colors">
+                    Dahanu · Palghar · MH
+                  </div>
                 </div>
               </div>
             </div>

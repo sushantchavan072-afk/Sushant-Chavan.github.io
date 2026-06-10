@@ -37,8 +37,18 @@ const items = [
 ];
 
 const certs = [
-  { date: "Mar 2026", name: "Deloitte Data Analytics", platform: "Forage", link: "https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing" },
-  { date: "Mar 2026", name: "Walmart Pharmacy Technician", platform: "Forage", link: "https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing" },
+  {
+    date: "Mar 2026",
+    name: "Deloitte Data Analytics",
+    platform: "Forage",
+    link: "https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing",
+  },
+  {
+    date: "Mar 2026",
+    name: "Walmart Pharmacy Technician",
+    platform: "Forage",
+    link: "https://drive.google.com/file/d/17M2_x2Alr1f1rS4k9-eSK41rzEj_j9Tb/view?usp=sharing",
+  },
   { date: "Mar 2026", name: "AI In Pharma", platform: "Certificate", link: "/Ai-In-Pharma.pdf" },
 ];
 
