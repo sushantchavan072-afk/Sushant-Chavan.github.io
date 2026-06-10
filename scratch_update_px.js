@@ -1,0 +1,20 @@
+const fs = require('fs');
+const path = require('path');
+const dir = 'c:/Users/HP/OneDrive/Documents/PORTFOLIO/src/components';
+const files = fs.readdirSync(dir).filter(f => f.endsWith('.tsx'));
+files.forEach(file => {
+  const fullPath = path.join(dir, file);
+  let content = fs.readFileSync(fullPath, 'utf8');
+  content = content.replace(/text-\[9px\]/g, 'text-[11px]');
+  content = content.replace(/text-\[10px\]/g, 'text-[12px]');
+  content = content.replace(/text-\[11px\]/g, 'text-[14px]');
+  content = content.replace(/h-\[500px\]/g, 'h-[625px]');
+  content = content.replace(/h-\[600px\]/g, 'h-[750px]');
+  content = content.replace(/max-h-\[320px\]/g, 'max-h-[400px]');
+  content = content.replace(/max-h-\[360px\]/g, 'max-h-[450px]');
+  content = content.replace(/h-\[450px\]/g, 'h-[560px]');
+  content = content.replace(/h-\[550px\]/g, 'h-[690px]');
+  content = content.replace(/h-\[700px\]/g, 'h-[875px]');
+  fs.writeFileSync(fullPath, content);
+});
+console.log('done');

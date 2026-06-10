@@ -190,7 +190,7 @@ export default function Chatbot() {
             >
               {/* FRONT FACE: Image Card */}
               <div
-                className="absolute inset-0 w-full h-full glass rounded-[2.5rem] overflow-hidden cursor-pointer group shadow-2xl"
+                className={`absolute inset-0 w-full h-full glass rounded-[2.5rem] overflow-hidden cursor-pointer group shadow-2xl ${isChatOpen ? "pointer-events-none" : ""}`}
                 style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                 onClick={() => setIsChatOpen(true)}
               >
@@ -204,7 +204,7 @@ export default function Chatbot() {
 
               {/* BACK FACE: Chatbot Interface */}
               <div
-                className="absolute inset-0 w-full h-full glass rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden border border-white/20 bg-background/50"
+                className={`absolute inset-0 w-full h-full glass rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden border border-white/20 bg-background/50 ${!isChatOpen ? "pointer-events-none" : ""}`}
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
