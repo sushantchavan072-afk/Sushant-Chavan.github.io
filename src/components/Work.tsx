@@ -25,7 +25,7 @@ export default function Work() {
       <div className="mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-6 md:gap-16 mb-10 md:mb-16 items-end">
           <div>
-            <div className="mono text-[10px] uppercase tracking-[0.3em] text-mint mb-6">
+            <div className="mono text-[12px] uppercase tracking-[0.3em] text-mint mb-6">
               04 — Checkout My Work
             </div>
             <h2 className="display text-5xl md:text-7xl">
@@ -63,7 +63,7 @@ export default function Work() {
                 <img
                   src={image.src}
                   alt={image.label}
-                  className="w-full max-h-[320px] sm:max-h-[360px] object-contain rounded-3xl transition-transform duration-500 hover:scale-105 mx-auto"
+                  className="w-full max-h-[400px] sm:max-h-[450px] object-contain rounded-3xl transition-transform duration-500 hover:scale-105 mx-auto"
                 />
               </Wrapper>
             );

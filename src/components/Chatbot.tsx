@@ -96,7 +96,7 @@ function ChatMessageBubble({ message }: { message: ChatMessage }) {
         }`}
       >
         <div
-          className={`mono text-[9px] uppercase tracking-[0.2em] mb-1.5 ${isUser ? "text-primary-foreground/70" : "text-foreground/40"}`}
+          className={`mono text-[11px] uppercase tracking-[0.2em] mb-1.5 ${isUser ? "text-primary-foreground/70" : "text-foreground/40"}`}
         >
           {isUser ? "You" : "Milo"}
         </div>
@@ -158,7 +158,7 @@ export default function Chatbot() {
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Side: Text Content */}
           <div className="max-w-xl">
-            <div className="mono text-[10px] uppercase tracking-[0.3em] text-mint mb-6">
+            <div className="mono text-[12px] uppercase tracking-[0.3em] text-mint mb-6">
               05 — Talk to Milo
             </div>
             <h2 className="display text-5xl md:text-7xl mb-6">
@@ -181,7 +181,7 @@ export default function Chatbot() {
           </div>
 
           {/* Right Side: Flipping Card Container */}
-          <div className="relative w-full h-[500px] md:h-[600px] [perspective:2000px]">
+          <div className="relative w-full h-[625px] md:h-[750px] [perspective:2000px]">
             <motion.div
               className="w-full h-full relative"
               style={{ transformStyle: "preserve-3d" }}
@@ -220,7 +220,7 @@ export default function Chatbot() {
                       </h3>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-mint animate-pulse" />
-                        <span className="text-[10px] uppercase tracking-wider text-foreground/50 mono">
+                        <span className="text-[12px] uppercase tracking-wider text-foreground/50 mono">
                           Online
                         </span>
                       </div>

@@ -82,15 +82,15 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           style={{ x: blob1X, y: blob1Y }}
-          className="absolute top-1/4 right-1/4 h-[420px] w-[420px] rounded-full bg-mint/20 blur-3xl animate-liquid-pulse"
+          className="absolute top-1/4 right-1/4 h-[525px] w-[525px] rounded-full bg-mint/20 blur-3xl animate-liquid-pulse"
         />
         <motion.div
           style={{ x: blob2X, y: blob2Y }}
-          className="absolute bottom-1/4 right-1/3 h-[380px] w-[380px] rounded-full bg-aqua/20 blur-3xl animate-liquid-pulse"
+          className="absolute bottom-1/4 right-1/3 h-[475px] w-[475px] rounded-full bg-aqua/20 blur-3xl animate-liquid-pulse"
         />
         <motion.div
           style={{ x: blob3X, y: blob3Y }}
-          className="absolute top-1/2 left-1/4 h-[300px] w-[300px] rounded-full bg-violet/15 blur-3xl"
+          className="absolute top-1/2 left-1/4 h-[375px] w-[375px] rounded-full bg-violet/15 blur-3xl"
         />
       </div>
 
@@ -106,7 +106,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 glass-pill rounded-full px-4 py-1.5 mb-8"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-mint animate-liquid-pulse" />
-            <span className="mono text-[11px] uppercase tracking-[0.2em] text-foreground/70">
+            <span className="mono text-[14px] uppercase tracking-[0.2em] text-foreground/70">
               B.Pharm · 2023–27 · Pune
             </span>
           </motion.div>
@@ -158,7 +158,7 @@ export default function Hero() {
           initial={{ opacity: 0, filter: "blur(12px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className={`order-1 lg:order-2 relative w-full z-0 ${isMobile ? "min-h-[380px] flex-shrink-0 my-4" : "h-[450px] sm:h-[550px] lg:h-[700px]"}`}
+          className={`order-1 lg:order-2 relative w-full z-0 ${isMobile ? "min-h-[475px] flex-shrink-0 my-4" : "h-[560px] sm:h-[690px] lg:h-[875px]"}`}
         >
           {/* Unbounded container for 3D elements */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] pointer-events-none">
@@ -174,7 +174,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 mono text-[10px] uppercase tracking-[0.3em] text-foreground/40"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 mono text-[12px] uppercase tracking-[0.3em] text-foreground/40"
       >
         <motion.span
           animate={{ y: [0, 6, 0] }}
